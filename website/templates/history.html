@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Check Due</title>
+  </head>
+  <body>
+
+<div class='container'>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">This guy</th>
+          <th scope="col">paid</th>
+          <th scope="col">for</th>
+          <th scope="col">to</th>
+          <th scope="col">Date</th>
+          <th scope="col">Payment Date</th>
+        </tr>
+      </thead>
+      <tbody>
+{%if due|length > 0 %}
+{%for item in due%}
+{%if item.status == True%}
+
+        <tr>
+          <td>{{item.person}}</td>
+          <td>{{item.amount}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.to}}</td>
+          <td>{{item.query}}</td>
+          <td>{{item.payment}}</td>
+        </tr>
+
+
+
+{%endif%}
+{%endfor%}
+{%endif%}
+
+</tbody>
+</table>
+
+
+</div>
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  </body>
+</html>
