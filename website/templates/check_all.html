@@ -14,36 +14,41 @@
 
 <div class='container'>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-          <th scope="col">This guy</th>
-          <th scope="col">paid</th>
-          <th scope="col">for</th>
-          <th scope="col">to</th>
-          <th scope="col">Date</th>
-          <th scope="col">Payment Date</th>
-        </tr>
-      </thead>
-      <tbody>
+    <table class="table table-warning table-striped">
+        <thead>
+          <tr>
+            <th scope="col">This guy</th>
+            <th scope="col">owes</th>
+            <th scope="col">to</th>
+            <th scope="col">Settlement</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+{{a}}
+
 {%if due|length > 0 %}
-{%for item in due reversed %}
-{%if item.status == True%}
-
-        <tr>
-          <td>{{item.person}}</td>
-          <td>{{item.amount}}</td>
-          <td>{{item.description}}</td>
-          <td>{{item.to}}</td>
-          <td>{{item.query}}</td>
-          <td>{{item.payment}}</td>
-        </tr>
+{%for item in due%}
 
 
+<tr>
+    <td>{{item.0.username}}</td>
+    <td>{{item.2}}</td>
+    <td>{{item.1.username}}</td>
+    <td><form method="post" action="">
+        {% csrf_token %}
+        <input class="form-control" type="hidden" value={{item.0}} name='item'>
+        <input class="form-control" type="hidden" value={{item.1}} name='item2'>
+        <input class="btn btn-success" type="submit" value="Paid"/>
+      </form></td>
+  </tr>
 
-{%endif%}
+
+
+
 {%endfor%}
 {%endif%}
+
 
 </tbody>
 </table>
